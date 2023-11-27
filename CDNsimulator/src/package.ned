@@ -1,0 +1,3 @@
+package cdnsimulator;
+
+@license(LGPL);

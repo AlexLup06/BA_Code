@@ -1,0 +1,5 @@
+*.sca
+*.anf
+*.vci
+*.vec
+simulations/results/*

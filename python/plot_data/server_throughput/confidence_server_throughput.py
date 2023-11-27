@@ -3,18 +3,22 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 import scipy.stats as st
+import os
 
-sys.path.append('../common')
+root = os.getenv("root")
+
+sys.path.append("../common")
 from helper_functions import draw_confidence_interval
 
 args = sys.argv
 num_surrogates = int(args[1])
 scenario = args[2]
-confidence= float(args[3])
+confidence = float(args[3])
 
 
 file_path = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/surrogate_throughput/"
+    root
+    + "/data/surrogate_throughput/"
     + scenario
     + "_s"
     + str(num_surrogates)
@@ -30,7 +34,6 @@ file_path = (
 # }
 
 fig = plt.figure(figsize=(8, 5))  # Adjust the width and height as needed
-
 
 
 with open(file_path, "r") as file:

@@ -3,6 +3,9 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 import scipy.stats as st
+import os
+
+root = os.getenv("root")
 
 sys.path.append("../common")
 from helper_functions import draw_confidence_interval
@@ -10,11 +13,12 @@ from helper_functions import draw_confidence_interval
 args = sys.argv
 num_surrogates = int(args[1])
 scenario = args[2]
-confidence= float(args[3])
+confidence = float(args[3])
 
 
 file_path = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/request_response_time/"
+    root
+    + "/data/request_response_time/"
     + scenario
     + "_s"
     + str(num_surrogates)

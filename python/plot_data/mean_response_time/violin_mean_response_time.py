@@ -4,6 +4,9 @@ import json
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import os
+
+root = os.getenv('root')
 
 sys.path.append("../common")
 from helper_functions import draw_violin
@@ -15,7 +18,7 @@ scenario = args[2]
 fig = plt.figure(figsize=(8, 5))  # Adjust the width and height as needed
 
 file_path = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/request_response_time/"
+    root+"/data/request_response_time/"
     + scenario
     + "_s"
     + str(num_surrogates)

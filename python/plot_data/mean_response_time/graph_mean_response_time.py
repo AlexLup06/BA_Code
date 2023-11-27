@@ -2,13 +2,17 @@ import sys
 import numpy as np
 import json
 import matplotlib.pyplot as plt
+import os
+
+root = os.getenv("root")
 
 args = sys.argv
 num_surrogates = int(args[1])
 scenario = args[2]
 
 file_path = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/request_response_time/"
+    root
+    + "/data/request_response_time/"
     + scenario
     + "_s"
     + str(num_surrogates)
@@ -30,10 +34,7 @@ all_response_times = [[] for _ in range(4)]
 with open(file_path, "r") as file:
     data = json.load(file)
 for key in data:
-
     running_means = np.zeros_like(data[key], dtype=float)
-
-
 
     # Calculate the running mean
     for i in range(len(data[key])):

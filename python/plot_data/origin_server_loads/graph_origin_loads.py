@@ -2,6 +2,9 @@ import sys
 import numpy as np
 import json
 import matplotlib.pyplot as plt
+import os
+
+root = os.getenv("root")
 
 args = sys.argv
 scenario = args[1]
@@ -10,7 +13,8 @@ fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(15, 5))  # Adjust figsize as
 
 for j, num_surrogates in enumerate([5, 10, 15]):
     file_path = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/origin_load/"
+        root
+        + "/data/origin_load/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -36,8 +40,6 @@ for j, num_surrogates in enumerate([5, 10, 15]):
 
         cache_policy = key.split("_")[2][2]
         all_origin_loads[int(cache_policy)] = data[key]
-
-
 
     names = ["Closest Surrogate", "Random Surrogate", "Load Balance", "Closest Origin"]
     colors = [
@@ -73,7 +75,7 @@ for j, num_surrogates in enumerate([5, 10, 15]):
         axes[j].set_ylabel("Origin Server Load", fontsize=16)
     axes[j].set_title(str(num_surrogates) + "Surrogate Servers", fontsize=16)
     # if j == 2:
-        # axes[j].legend(fontsize=11, loc="upper right")
+    # axes[j].legend(fontsize=11, loc="upper right")
     # else:
     axes[j].legend(fontsize=11)
     axes[j].grid(True)

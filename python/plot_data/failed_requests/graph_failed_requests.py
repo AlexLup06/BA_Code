@@ -2,6 +2,9 @@ import sys
 import numpy as np
 import json
 import matplotlib.pyplot as plt
+import os
+
+root = os.getenv('root')
 
 args = sys.argv
 scenario = args[1]
@@ -19,7 +22,7 @@ fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(15, 5))  # Adjust figsize as
 
 for j, num_surrogates in enumerate([5, 10, 15]):
     outfile = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/failed_requests/"
+        root+"/Code/data/failed_requests/"
         + scenario
         + "_s"
         + str(num_surrogates)

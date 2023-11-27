@@ -3,6 +3,9 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 import scipy.stats as st
+import os
+
+root = os.getenv("root")
 
 sys.path.append("../common")
 from helper_functions import draw_cdf
@@ -23,7 +26,8 @@ for j, num_surrogates in enumerate([5, 10, 15]):
     # }
 
     file_path = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/workload_difference/"
+        root
+        + "/data/workload_difference/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -57,12 +61,14 @@ for j, num_surrogates in enumerate([5, 10, 15]):
     linestyle = ["-", "--", "-.", ":", "-", "--", "-."]
     for i, key in enumerate(data):
         cache_policy = key.split("_")[3][2]
-        if cache_policy=="3":
+        if cache_policy == "3":
             continue
         legend.append(names[int(cache_policy)])
         workload_difference = data[key]
         sorted_workload_difference = np.sort(workload_difference)
-        cdf = np.arange(1, len(sorted_workload_difference) + 1) / len(sorted_workload_difference)
+        cdf = np.arange(1, len(sorted_workload_difference) + 1) / len(
+            sorted_workload_difference
+        )
         axes[j].plot(
             sorted_workload_difference,
             cdf,

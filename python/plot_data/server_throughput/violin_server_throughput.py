@@ -2,6 +2,9 @@ import sys
 import numpy as np
 import json
 import matplotlib.pyplot as plt
+import os
+
+root = os.getenv("root")
 
 sys.path.append("../common")
 from helper_functions import draw_violin
@@ -12,7 +15,8 @@ num_surrogates = int(args[1])
 scenario = args[2]
 
 file_path = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/surrogate_throughput/"
+    root
+    + "/data/surrogate_throughput/"
     + scenario
     + "_s"
     + str(num_surrogates)

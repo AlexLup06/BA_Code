@@ -43,4 +43,8 @@ storage: https://tu-dortmund.sciebo.de/s/YJOnFi4jtr31FAX
 If questions arise fell free to email me: alexander.lupatsiy@tu-dortmund.de
 
 
-
+4. Generating Network
+In the python folder is a directory called configure_network. Here are scripts to translate the BRITE generated network into a format that omnet++ understands. To generate networks follow the installation guide from BRITE and use ./Brite_Config.conf as the config file. The seeds for the networks used in our simulations can be found in ./Networks/ 
+This folder also includes the generated networks from those seeds.
+To translate the network files into omnet++ readable files use ./python/NetworkConfiguration.py
+This generates the network, request trace files, assigns each client a surrogate server and calculates the closest surrogate server for each surrogate servers. 

@@ -1,6 +1,9 @@
 import sys
 import numpy as np
 import json
+import os
+
+root = os.getenv("root")
 
 # calculate the request response time
 #
@@ -23,7 +26,8 @@ scenario = args[2]
 for cache_policy in range(4):
     key = scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_client"
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -69,7 +73,8 @@ for cache_policy in range(4):
     # write that data to a file
     # the file has an array for each cache policy: in total four arrays (there is three of those files)
     outfile = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/request_response_time/"
+        root
+        + "/data/request_response_time/"
         + scenario
         + "_s"
         + str(num_surrogates)

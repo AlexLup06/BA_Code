@@ -1,6 +1,9 @@
 import sys
 import numpy as np
 import json
+import os
+
+root = os.getenv("root")
 
 #
 # calculate correlation between the number of failed requests and the recovery time
@@ -12,19 +15,22 @@ scenario = args[2]
 
 
 file_path_fail = (
-    "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/count_failed_requests/"
+    root
+    + "/data/count_failed_requests/"
     + scenario
     + "_s"
     + str(num_surrogates)
-    + "_count_failed_requests.json")
+    + "_count_failed_requests.json"
+)
 
 file_path_rec = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/recovery_time/"
-        + scenario
-        + "_s"
-        + str(num_surrogates)
-        + "_recovery_times.json"
-    )
+    root
+    + "/data/recovery_time/"
+    + scenario
+    + "_s"
+    + str(num_surrogates)
+    + "_recovery_times.json"
+)
 
 with open(file_path_fail, "r") as file:
     data = json.load(file)

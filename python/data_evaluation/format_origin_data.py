@@ -1,9 +1,13 @@
 import json
 import sys
+import os
+
+root = os.getenv("root")
 
 #
 # format origin server data
 #
+
 
 def remove_trailing_zeros(arr):
     while arr and arr[-1] == 0:
@@ -17,7 +21,8 @@ scenario = args[2]
 
 for cache_policy in range(4):
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -27,7 +32,12 @@ for cache_policy in range(4):
     )
 
     new_key = (
-        scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_originload"
+        scenario
+        + "_s"
+        + str(num_surrogates)
+        + "_cp"
+        + str(cache_policy)
+        + "_originload"
     )
     output_data = {}
     output_data[new_key] = {"time": [], "values": []}
@@ -48,19 +58,18 @@ for cache_policy in range(4):
                     # mean = sum(wo_trailing_zeros[i : i + 100]) / 100
                     means.append(max(wo_trailing_zeros[i : i + 100]))
 
-
                 # output_data[new_key]["load"]["time"].append(x)
                 output_data[new_key]["values"].append(means)
 
-
     outfilename = (
-            "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
-            + scenario
-            + "_s"
-            + str(num_surrogates)
-            + "_cp"
-            + str(cache_policy)
-            + "/origin_formatted.json"
+        root
+        + "/"
+        + scenario
+        + "_s"
+        + str(num_surrogates)
+        + "_cp"
+        + str(cache_policy)
+        + "/origin_formatted.json"
     )
 
     with open(outfilename, "w") as output_file:

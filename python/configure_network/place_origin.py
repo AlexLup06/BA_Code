@@ -1,20 +1,11 @@
 import re
 from graph import Graph
+import os
+
+root = os.getenv("root")
 
 pattern = r"\[(\d+)\]"
-# for s in range(3):
-#     for networkId in range(8):
-s = 0
-networkId = 0
 
-
-# file_path = (
-#     "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/CDNsimulator/networks_s"
-#     + str(5 * (s + 1))
-#     + "/network"
-#     + str(networkId)
-#     + ".ned"
-# )
 for s in range(3):
     for networkId in range(8):
         g = Graph(300)
@@ -22,9 +13,10 @@ for s in range(3):
         start_reading = False
         read_routers = False
         read_surrogates = False
-        numSurrogates=5 * (s + 1)
+        numSurrogates = 5 * (s + 1)
         file_path = (
-            "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/CDNsimulator/simulations/networks_s"
+            root
+            + "/CDNsimulator/simulations/networks_s"
             + str(numSurrogates)
             + "/network"
             + str(networkId)

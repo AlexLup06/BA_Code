@@ -1,6 +1,9 @@
 import sys
 import numpy as np
 import json
+import os
+
+root = os.getenv("root")
 
 # calculate the average load of the origin server
 #
@@ -30,7 +33,8 @@ for cache_policy in range(4):
     )
 
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -66,7 +70,8 @@ for cache_policy in range(4):
     # write that data to a file
     # the file has an array for each cache policy: in total four arrays (there is three of those files)
     outfile = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/origin_load/"
+        root
+        + "/data/origin_load/"
         + scenario
         + "_s"
         + str(num_surrogates)

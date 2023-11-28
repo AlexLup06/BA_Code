@@ -1,10 +1,14 @@
 import json
 import sys
 import re
+import os
+
+root = os.getenv("root")
 
 #
 # format surrogate server data
 #
+
 
 def remove_trailing_zeros(arr):
     while arr and arr[-1] == 0:
@@ -21,7 +25,8 @@ for cache_policy in range(4):
     node = "surrogate"
 
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -109,7 +114,8 @@ for cache_policy in range(4):
                 ].append(vector["time"])
 
     outfilename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)

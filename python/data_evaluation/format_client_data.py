@@ -1,9 +1,12 @@
 import json
 import sys
+import os
 
+root = os.getenv("root")
 #
 # format client data
 #
+
 
 def remove_multiple_occurrences(arr1, arr2):
     seen = {}
@@ -30,7 +33,8 @@ scenario = args[2]
 
 for cache_policy in range(4):
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -39,8 +43,9 @@ for cache_policy in range(4):
         + "/client.json"
     )
 
-    new_key = scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_client"
-
+    new_key = (
+        scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_client"
+    )
 
     output_data = {
         new_key: {
@@ -72,9 +77,9 @@ for cache_policy in range(4):
                 output_data[new_key]["fail"]["time"].append(vector["time"])
                 output_data[new_key]["fail"]["values"].append(vector["value"])
 
-
     outfilename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)

@@ -13,14 +13,17 @@ from functions import (
     create_client_requests,
 )
 import sys
+import os
 
-prefix = "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/CDNsimulator/simulations"
+root = os.getenv("root")
+
+prefix = root + "/CDNsimulator/simulations"
 
 multiplier = 200
 squares_per_side = 5  # for deviding clients determining surrogate server positions
 num_clients_per_node = 20
 num_clients = 300
-flash_crowd=True
+flash_crowd = True
 
 args = sys.argv
 
@@ -43,11 +46,7 @@ for networkId in range(8):
             edges,
             points,
             multiplier,
-            (
-                "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/Networks/network"
-                + str(networkId)
-                + ".txt"
-            ),
+            (root + "/Networks/network" + str(networkId) + ".txt"),
             networkId,
         )
         for i in range(len(edges)):
@@ -137,9 +136,8 @@ for networkId in range(8):
                 + str(networkId)
             ),
             num_clients_per_node,
-            client_to_surr
+            client_to_surr,
         )
-
 
 
 # creating client request files
@@ -150,5 +148,5 @@ for i in range(3):
         num_clients_per_node,
         5 * (i + 1),
         num_clients,
-        flash_crowd
+        flash_crowd,
     )

@@ -2,6 +2,9 @@ import sys
 import numpy as np
 import json
 import math
+import os
+
+root = os.getenv("root")
 
 
 def find_index_to_reach_value(array, target_value):
@@ -54,7 +57,8 @@ for cache_policy in range(4):
         scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_surrogate"
     )
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -76,7 +80,7 @@ for cache_policy in range(4):
             ]
 
             # get between 130s and 246s
-            if scenario == "flash"or scenario == "final_flash":
+            if scenario == "flash" or scenario == "final_flash":
                 start_index = find_index_to_reach_value(request_in_from_surrogate, 130)
                 end_index = find_index_to_reach_value(request_in_from_surrogate, 246)
                 request_in_from_surrogate = request_in_from_surrogate[
@@ -101,7 +105,8 @@ for cache_policy in range(4):
 
     # save workload difference
     outfile = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/workload_difference/"
+        root
+        + "/data/workload_difference/"
         + scenario
         + "_s"
         + str(num_surrogates)

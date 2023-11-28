@@ -2,6 +2,9 @@ import sys
 import numpy as np
 import json
 import math
+import os
+
+root = os.getenv("root")
 
 
 def find_index_to_reach_value(array, target_value):
@@ -53,7 +56,8 @@ for cache_policy in range(4):
         scenario + "_s" + str(num_surrogates) + "_cp" + str(cache_policy) + "_surrogate"
     )
     filename = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/"
+        root
+        + "/"
         + scenario
         + "_s"
         + str(num_surrogates)
@@ -79,7 +83,7 @@ for cache_policy in range(4):
             )
 
             # 1. get flash crowd data
-            if scenario == "flash"or scenario == "final_flash":
+            if scenario == "flash" or scenario == "final_flash":
                 begin_flash_index = find_index_to_reach_value(
                     response_out_to_client, 130
                 )
@@ -96,12 +100,16 @@ for cache_policy in range(4):
             # throughput_rates[surrogate].extend(throughput)
 
         # remove leading and trailing zeros
-        while all_throughput and all_throughput[0] == 0 and (scenario == "flash"or scenario == "final_flash"):
+        while (
+            all_throughput
+            and all_throughput[0] == 0
+            and (scenario == "flash" or scenario == "final_flash")
+        ):
             all_throughput.pop(0)
 
         while all_throughput and all_throughput[-1] == 0:
             all_throughput.pop()
-            
+
         if scenario == "base":
             all_throughput = all_throughput[100 : len(all_throughput) - 50]
 
@@ -109,7 +117,8 @@ for cache_policy in range(4):
 
     # save recovery times
     outfile = (
-        "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/data/surrogate_throughput/"
+        root
+        + "/data/surrogate_throughput/"
         + scenario
         + "_s"
         + str(num_surrogates)

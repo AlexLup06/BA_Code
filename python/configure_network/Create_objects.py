@@ -2,13 +2,15 @@ import random
 import os
 import sys
 
+root = os.getenv("root")
+
 args = sys.argv
 num_surrogates = int(args[1])
 
 seed_value = 50
 random.seed(seed_value)
 
-path = "/Users/alexanderlupatsiy/Documents/Uni/Semester_6/Bachelor_Arbeit/Code/CDNsimulator/simulations/config/web_object_s15"
+path = root + "/CDNsimulator/simulations/config/web_object_s15"
 
 if os.path.exists(path):
     os.remove(path)
